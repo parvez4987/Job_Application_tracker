@@ -20,3 +20,72 @@ const tabJobCount = document.getElementById('tab-job-count');
 const tabButtons = document.querySelectorAll('.tab-btn');
 
 
+function renderUI() {
+ 
+        const filteredJobs = jobs.filter(job => {
+            if (currentTab === 'all') return true;
+            return job.status === currentTab;
+        });
+
+
+    tabJobCount.textContent = `${filteredJobs.length} Jobs`;
+
+
+    if (filteredJobs.length === 0) {
+        jobsContainer.innerHTML = '';
+        jobsContainer.classList.add('hidden');
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+    } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+        jobsContainer.classList.remove('hidden');
+        
+        // HTML for job
+
+        jobsContainer.innerHTML = filteredJobs.map(job => {
+            
+            let badgeClass = "badge-outline text-slate-500";
+            let badgeText = "NOT APPLIED";
+            if (job.status === 'interview') { 
+                badgeClass = "badge-success text-white border-transparent"; badgeText = "INTERVIEW"; 
+            }
+            if (job.status === 'rejected') {
+                badgeClass = "badge-error text-white border-transparent"; badgeText = "REJECTED"; 
+            }
+
+            return `
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="text-lg font-bold text-slate-800">${job.companyName}</h3>
+                    
+                    <button onclick="deleteJob(${job.id})" class="btn btn-sm btn-ghost hover:bg-red-50">
+                        <img src="delete.png" alt="Delete Job" class="w-5 h-5 object-contain" />
+                    </button>
+
+                </div>
+                <p class="text-sm font-medium text-slate-600 mb-2">${job.position}</p>
+                <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 mb-4">
+                    <span>${job.location}</span>
+                    <span>•</span>
+                    <span>${job.type}</span>
+                    <span>•</span>
+                    <span>${job.salary}</span>
+                </div>
+                <div class="mb-4">
+                    <span class="badge ${badgeClass} text-[10px] font-bold tracking-wider">${badgeText}</span>
+                </div>
+                <p class="text-sm text-slate-600 mb-6 leading-relaxed">${job.description}</p>
+                
+                <div class="flex space-x-3">
+                    <button onclick="updateStatus(${job.id}, 'interview')" class="btn btn-sm ${job.status === 'interview' ? 'btn-success text-white' : 'btn-outline btn-success'}">Interview</button>
+                    <button onclick="updateStatus(${job.id}, 'rejected')" class="btn btn-sm ${job.status === 'rejected' ? 'btn-error text-white' : 'btn-outline btn-error'}">Rejected</button>
+                </div>
+            </div>
+            `;
+        }).join('');
+    }
+
+
+        
+}
