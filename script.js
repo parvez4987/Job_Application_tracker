@@ -1,7 +1,22 @@
+// all dataa
 let jobs = [
     { id: 1, companyName: "Mobile First Corp", position: "React Native Developer", location: "Remote", type: "Full-time", salary: "$130,000 - $175,000", description: "Build cross-platform mobile applications using React Native. Work closely with design and backend teams.", status: "not-applied" },
     { id: 2, companyName: "WebFlow Agency", position: "Web Designer & Developer", location: "Los Angeles, CA", type: "Part-time", salary: "$60,000 - $100,000", description: "Create stunning web experiences for high-profile clients. Must have a strong portfolio and experience with modern web design trends.", status: "not-applied" },
     { id: 3, companyName: "DataViz Solutions", position: "Data Visualization Specialist", location: "Boston, MA", type: "Full-time", salary: "$120,000 - $160,000", description: "Transform complex data into compelling visual stories. Requires solid D3.js, React, and strong analytical thinking.", status: "not-applied" },
     { id: 4, companyName: "CloudFirst Inc", position: "Backend Developer", location: "Seattle, WA", type: "Full-time", salary: "$140,000 - $180,000", description: "Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.", status: "not-applied" },
     { id: 5, companyName: "Innovation Labs", position: "UI/UX Engineer", location: "Austin, TX", type: "Full-time", salary: "$110,000 - $150,000", description: "Design intuitive and functional user interfaces for our suite of products. Strong grasp of UX laws and frontend development required.", status: "not-applied" }
+   
 ];
+
+let currentTab = "all";
+
+// Elments
+const jobsContainer = document.getElementById('jobs-container');
+const emptyState = document.getElementById('empty-state');
+const statTotal = document.getElementById('stat-total');
+const statInterview = document.getElementById('stat-interview');
+const statRejected = document.getElementById('stat-rejected');
+const tabJobCount = document.getElementById('tab-job-count');
+const tabButtons = document.querySelectorAll('.tab-btn');
+
+
