@@ -87,5 +87,35 @@ function renderUI() {
     }
 
 
-        
+        updateDashboardStats();
+
 }
+
+
+
+window.updateStatus = (id, newStatus) => {
+    const jobIndex = jobs.findIndex(j => j.id === id);
+    if (jobIndex > -1) {
+        jobs[jobIndex].status = newStatus;
+        renderUI();
+    }
+};
+
+
+window.deleteJob = (id) => {
+    jobs = jobs.filter(j => j.id !== id);
+    renderUI();
+};
+
+
+function updateDashboardStats() {
+    const total = jobs.length;
+    const interview = jobs.filter(j => j.status === 'interview').length;
+    const rejected = jobs.filter(j => j.status === 'rejected').length;
+
+    statTotal.textContent = total;
+    statInterview.textContent = interview;
+    statRejected.textContent = rejected;
+};
+
+
