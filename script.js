@@ -146,6 +146,4 @@ tabButtons.forEach(button => {
 });
 
 
-
-
 renderUI();
