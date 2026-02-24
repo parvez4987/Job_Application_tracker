@@ -4,7 +4,10 @@ let jobs = [
     { id: 2, companyName: "WebFlow Agency", position: "Web Designer & Developer", location: "Los Angeles, CA", type: "Part-time", salary: "$60,000 - $100,000", description: "Create stunning web experiences for high-profile clients. Must have a strong portfolio and experience with modern web design trends.", status: "not-applied" },
     { id: 3, companyName: "DataViz Solutions", position: "Data Visualization Specialist", location: "Boston, MA", type: "Full-time", salary: "$120,000 - $160,000", description: "Transform complex data into compelling visual stories. Requires solid D3.js, React, and strong analytical thinking.", status: "not-applied" },
     { id: 4, companyName: "CloudFirst Inc", position: "Backend Developer", location: "Seattle, WA", type: "Full-time", salary: "$140,000 - $180,000", description: "Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.", status: "not-applied" },
-    { id: 5, companyName: "Innovation Labs", position: "UI/UX Engineer", location: "Austin, TX", type: "Full-time", salary: "$110,000 - $150,000", description: "Design intuitive and functional user interfaces for our suite of products. Strong grasp of UX laws and frontend development required.", status: "not-applied" }
+    { id: 5, companyName: "Innovation Labs", position: "UI/UX Engineer", location: "Austin, TX", type: "Full-time", salary: "$110,000 - $150,000", description: "Design intuitive and functional user interfaces for our suite of products. Strong grasp of UX laws and frontend development required.", status: "not-applied" },
+    { id: 6, companyName: "MegaCorp Solutions", position: "JavaScript Developer", location: "New York, NY", type: "Full-time", salary: "$120,000 - $170,000", description: "Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development.", status: "not-applied" },
+    { id: 7, companyName: "StartupXYZ", position: "Full Stack Engineer", location: "Remote", type: "Full-time", salary: "$120,000 - $160,000", description: "Join our fast-paced startup and take ownership of core product features. Experience with Node.js and React required. Great benefits and equity packages included.", status: "not-applied" },
+    { id: 8, companyName: "TechCorp Industries", position: "Senior Frontend Developer", location: "San Francisco, CA", type: "Full-time", salary: "$150,000 - $195,000", description: "We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will lead technical decisions on cutting-edge projects.", status: "not-applied" }
    
 ];
 
@@ -20,6 +23,7 @@ const tabJobCount = document.getElementById('tab-job-count');
 const tabButtons = document.querySelectorAll('.tab-btn');
 
 
+// core function
 function renderUI() {
  
         const filteredJobs = jobs.filter(job => {
@@ -119,3 +123,25 @@ function updateDashboardStats() {
 };
 
 
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+
+
+        currentTab = event.target.getAttribute('data-tab');
+        
+   
+        tabButtons.forEach(btn => {
+            btn.classList.remove('btn-primary');
+            btn.classList.add('btn-ghost', 'bg-white', 'text-slate-600');
+        });
+        event.target.classList.remove('btn-ghost', 'bg-white', 'text-slate-600');
+        event.target.classList.add('btn-primary');
+
+        
+        
+    });
+});
+
+
+renderUI();
