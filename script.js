@@ -138,7 +138,7 @@ tabButtons.forEach(button => {
         event.target.classList.remove('btn-ghost', 'bg-white', 'text-slate-600');
         event.target.classList.add('btn-primary');
 
-        
+        renderUI();
         
     });
 });
