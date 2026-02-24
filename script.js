@@ -1,4 +1,5 @@
 // all dataa
+
 let jobs = [
     { id: 1, companyName: "Mobile First Corp", position: "React Native Developer", location: "Remote", type: "Full-time", salary: "$130,000 - $175,000", description: "Build cross-platform mobile applications using React Native. Work closely with design and backend teams.", status: "not-applied" },
     { id: 2, companyName: "WebFlow Agency", position: "Web Designer & Developer", location: "Los Angeles, CA", type: "Part-time", salary: "$60,000 - $100,000", description: "Create stunning web experiences for high-profile clients. Must have a strong portfolio and experience with modern web design trends.", status: "not-applied" },
@@ -14,6 +15,7 @@ let jobs = [
 let currentTab = "all";
 
 // Elments
+
 const jobsContainer = document.getElementById('jobs-container');
 const emptyState = document.getElementById('empty-state');
 const statTotal = document.getElementById('stat-total');
@@ -24,6 +26,7 @@ const tabButtons = document.querySelectorAll('.tab-btn');
 
 
 // core function
+
 function renderUI() {
  
         const filteredJobs = jobs.filter(job => {
@@ -90,7 +93,6 @@ function renderUI() {
         }).join('');
     }
 
-
         updateDashboardStats();
 
 }
@@ -142,6 +144,8 @@ tabButtons.forEach(button => {
         
     });
 });
+
+
 
 
 renderUI();
